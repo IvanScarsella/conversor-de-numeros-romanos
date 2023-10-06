@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useEffect, useState, ChangeEvent } from "react";
-import { convertToRoman } from "../../functions/functions";
+import { convertToRoman, getRandomAndSetInput } from "../../functions/functions";
 
 export default function NumberToRoman() {
     const [input, setInput] = useState<number>(1);
@@ -22,9 +22,9 @@ export default function NumberToRoman() {
         setInput(isNaN(value) ? 0 : value);
     }
 
-    function handleWheel(e: React.WheelEvent<HTMLInputElement>) {
-        e.preventDefault();
-    }
+    // function handleWheel(e: React.WheelEvent<HTMLInputElement>) {
+    //     e.preventDefault();
+    // }
 
     return (
         <>
@@ -32,12 +32,17 @@ export default function NumberToRoman() {
             <input
                 onChange={changeHandler}
                 placeholder={input.toString()}
+                value={input}
                 min="1"
                 max="1000000"
                 type="number"
                 id="input"
-                onWheel={handleWheel}
+                // onWheel={handleWheel}
             />
+            <button
+                onClick={() => getRandomAndSetInput(input, setInput)}>
+                Aleatorio
+            </button>
             <h1>{roman}</h1>
         </>
     );

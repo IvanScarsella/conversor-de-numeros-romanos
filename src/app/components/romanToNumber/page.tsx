@@ -1,9 +1,9 @@
 "use client"
 
 import React, { useEffect, useState, ChangeEvent } from "react";
-import { convertToNumber, inputValidation } from "../../functions/functions";
+import { convertToNumber, inputValidation, getRandomAndSetInput } from "../../functions/functions";
 
-export default function NumberToRoman() {
+export default function RomanToNumber() {
     const [input, setInput] = useState<string>("I");
     const [number, setNumber] = useState<number>(1);
 
@@ -36,6 +36,10 @@ export default function NumberToRoman() {
                 type="text"
                 id="input"
             />
+            <button
+                onClick={() => getRandomAndSetInput(input, setInput)}>
+                Aleatorio
+            </button>
             <h1>{number}</h1>
         </>
     );

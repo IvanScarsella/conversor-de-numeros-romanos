@@ -26,7 +26,6 @@ function convertToRoman(numero: number): string {
         { valor: 4, romano: 'IV' },
         { valor: 1, romano: 'I' },
     ];
-
     let resultado = '';
 
     if (numero > 1000000) {
@@ -88,21 +87,45 @@ function inputValidation(input: string) {
             upperCase === "L" ||
             upperCase === "C" ||
             upperCase === "D" ||
-            upperCase === "M") {
+            upperCase === "M" ||
+            upperCase === 'M\u0305V\u0305' ||
+            upperCase === 'V\u0305' ||
+            upperCase === 'M\u0305X\u0305' ||
+            upperCase === 'X\u0305' ||
+            upperCase === 'X\u0305L\u0305' ||
+            upperCase === 'L\u0305' ||
+            upperCase === 'X\u0305C\u0305' ||
+            upperCase === 'C\u0305' ||
+            upperCase === 'C\u0305D\u0305' ||
+            upperCase === 'D\u0305' ||
+            upperCase === 'C\u0305M\u0305' ||
+            upperCase === 'M\u0305') {
             return true
         } else {
             return false
         }
     }
+    let numberI = 0; // 1
+    let numberV = 0; // 5
+    let numberX = 0; // 10
+    let numberL = 0; // 50
+    let numberC = 0; // 100
+    let numberD = 0; // 500
+    let numberM = 0; // 1000
+    let numberMV = 0; // 4000
+    let numberVV = 0; // 5000
+    let numberMX = 0; // 9000
+    let numberXX = 0; // 10000
+    let numberXL = 0; // 40000
+    let numberLL = 0; // 50000
+    let numberXC = 0; // 90000
+    let numberCC = 0; // 100000
+    let numberCD = 0; // 400000
+    let numberDD = 0; // 500000
+    let numberCM = 0; // 900000
+    let numberMM = 0; // 1000000
 
-    let numberI = 0;
-    let numberV = 0;
-    let numberX = 0;
-    let numberL = 0;
-    let numberC = 0;
-    let numberD = 0;
-    let numberM = 0;
-
+    console.log(input)
     for (let i = 0; i < input.length; i++) {
         if (!romanValidation(input[i])) {
             return false
@@ -128,6 +151,42 @@ function inputValidation(input: string) {
         if (input[i].toUpperCase() === 'M') {
             numberM++
         }
+        if (input[i].toUpperCase() === 'M\u0305V\u0305') {
+            numberMV++
+        }
+        if (input[i].toUpperCase() === 'V\u0305') {
+            numberVV++
+        }
+        if (input[i].toUpperCase() === 'M\u0305X\u0305') {
+            numberMX++
+        }
+        if (input[i].toUpperCase() === 'X\u0305') {
+            numberXX++
+        }
+        if (input[i].toUpperCase() === 'X\u0305L\u0305') {
+            numberXL++
+        }
+        if (input[i].toUpperCase() === 'L\u0305') {
+            numberLL++
+        }
+        if (input[i].toUpperCase() === 'X\u0305C\u0305') {
+            numberXC++
+        }
+        if (input[i].toUpperCase() === 'C\u0305') {
+            numberCC++
+        }
+        if (input[i].toUpperCase() === 'C\u0305D\u0305') {
+            numberCD++
+        }
+        if (input[i].toUpperCase() === 'D\u0305') {
+            numberDD++
+        }
+        if (input[i].toUpperCase() === 'C\u0305M\u0305') {
+            numberCM++
+        }
+        if (input[i].toUpperCase() === 'M\u0305') {
+            numberMM++
+        }
     }
 
     if (
@@ -137,7 +196,19 @@ function inputValidation(input: string) {
         numberL > 1 ||
         numberC > 3 ||
         numberD > 1 ||
-        numberM > 3
+        numberM > 3 ||
+        numberMV > 1 ||
+        numberVV > 3 ||
+        numberMX > 1 ||
+        numberXX > 3 ||
+        numberXL > 1 ||
+        numberLL > 3 ||
+        numberXC > 1 ||
+        numberCC > 3 ||
+        numberCD > 1 ||
+        numberDD > 3 ||
+        numberCM > 1 ||
+        numberMM > 3
     ) {
         return false
     }
@@ -145,4 +216,18 @@ function inputValidation(input: string) {
     return true
 }
 
-export { convertToRoman, convertToNumber, inputValidation };
+function getRandomAndSetInput(input: number | string, setInput: Function) {
+    if (typeof input === "number") {
+        const random = Math.floor(Math.random() * (1000000 - 1) + 1);
+        // Lógica si input es un número
+        setInput(random);
+    } else if (typeof input === "string") {
+        const random = Math.floor(Math.random() * (4000 - 1) + 1);
+        // Lógica si input es una cadena
+        // Aquí puedes realizar la acción necesaria
+        setInput(convertToRoman(random));
+    }
+}
+
+
+export { convertToRoman, convertToNumber, inputValidation, getRandomAndSetInput };
