@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, ChangeEvent } from "react";
 import { convertToNumber, inputValidation, getRandomAndSetInput } from "../../functions/functions";
-import Card from "../card/page";
+import { Card } from "../card/page";
 
 export default function RomanToNumber() {
     const [input, setInput] = useState<string>("I");
