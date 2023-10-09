@@ -1,6 +1,6 @@
-type CardProps = {
-    changeHandler: (e: any) => void; // Ajusta el tipo de acuerdo a tus necesidades
-    input: number | string;
+interface CardProps {
+    changeHandler: (e: any) => void // Ajusta el tipo de acuerdo a tus necesidades
+    input: number | string
     setInput: (value: any) => void; // Ajusta el tipo de acuerdo a tus necesidades
     getRandomAndSetInput: (input: number | string, setInput: (value: number | string) => void) => void;
     roman: number | string;

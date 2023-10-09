@@ -1,4 +1,7 @@
 .mainDiv {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   background: linear-gradient(#b4000038, #cfb00038);
 }
 
