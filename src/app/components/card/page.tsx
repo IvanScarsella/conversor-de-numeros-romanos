@@ -1,4 +1,4 @@
-interface CardProps {
+export interface CardProps {
     changeHandler: (e: any) => void // Ajusta el tipo de acuerdo a tus necesidades
     input: number | string
     setInput: (value: any) => void; // Ajusta el tipo de acuerdo a tus necesidades
@@ -60,4 +60,4 @@ export function Card({
     );
 }
 
-export default Card;
+// export default Card;
