@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState, ChangeEvent } from "react";
 import { convertToNumber, inputValidation, getRandomAndSetInput } from "../../functions/functions";
+import Card from "../card/page";
 
 export default function RomanToNumber() {
     const [input, setInput] = useState<string>("I");
@@ -28,19 +29,17 @@ export default function RomanToNumber() {
 
     return (
         <>
-            <div>Conversor de Números Romanos a Números Decimales</div>
-            <input
-                onChange={changeHandler}
-                value={input}
-                placeholder="Número romano"
+            <Card
+                changeHandler={changeHandler}
+                input={input}
+                setInput={setInput}
+                getRandomAndSetInput={getRandomAndSetInput}
+                roman={number}
                 type="text"
-                id="input"
+                title="Conversor de Números Romanos a Números Decimales"
+                input1="Romano"
+                input2="Decimal"
             />
-            <button
-                onClick={() => getRandomAndSetInput(input, setInput)}>
-                Aleatorio
-            </button>
-            <h1>{number}</h1>
         </>
     );
 }

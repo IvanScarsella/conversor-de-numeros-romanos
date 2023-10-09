@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState, ChangeEvent } from "react";
 import { convertToRoman, getRandomAndSetInput, generateRomanNumerals, containsSameDigitFourOrMoreTimes } from "../../functions/functions";
+import Card from "../card/page";
 
 export default function NumberToRoman() {
     const [input, setInput] = useState<number>(1);
@@ -20,7 +21,7 @@ export default function NumberToRoman() {
     }, [input]);
 
     useEffect(() => {
-        if(containsSameDigitFourOrMoreTimes(roman)){
+        if (containsSameDigitFourOrMoreTimes(roman)) {
             array.push(roman)
         }
     }, [input])
@@ -32,22 +33,17 @@ export default function NumberToRoman() {
 
     return (
         <>
-            <div>Conversor de Números decimales a Números Romanos</div>
-            <input
-                onChange={changeHandler}
-                placeholder={input.toString()}
-                value={input}
-                min="1"
-                max="1000000"
+            <Card
+                changeHandler={changeHandler}
+                input={input}
+                setInput={setInput}
+                getRandomAndSetInput={getRandomAndSetInput}
+                roman={roman}
                 type="number"
-                id="input"
-            // onWheel={handleWheel}
+                title="Conversor de Números Decimales a Números Romanos"
+                input1="Decimal"
+                input2="Romano"
             />
-            <button
-                onClick={() => getRandomAndSetInput(input, setInput)}>
-                Aleatorio
-            </button>
-            <h1>{roman}</h1>
         </>
     );
 }

@@ -1,8 +1,10 @@
-import './globals.css'
+import 'bootstrap/dist/css/bootstrap.css';
+import './globals.scss'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Gideon_Roman } from 'next/font/google'
+import icon from './icon.png'
 
-const inter = Inter({ subsets: ['latin'] })
+const gideon_Roman = Gideon_Roman({ subsets: ['latin'], weight: "400" })
 
 export const metadata: Metadata = {
   title: 'Conversor de Números Romanos',
@@ -14,9 +16,18 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+
+  // necesito este useEffect si quiero utilizar códigos de javascript desde Bootstrap
+  // useEffect(() => { 
+  //   require('bootstrap/dist/js/bootstrap.bundle.min.js');
+  // }, []);
+
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <head>
+        <link rel="shortcut icon" href={icon.src} />
+      </head>
+      <body className={gideon_Roman.className}>{children}</body>
     </html>
   )
 }
