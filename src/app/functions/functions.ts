@@ -78,6 +78,10 @@ function convertToNumber(roman: string): number {
 
 function inputValidation(input: string) {
 
+    if(input.length > 3 && exceptionsArray.includes(input)){
+        return true
+    }
+
     function romanValidation(str: string) {
         let upperCase = str.toLocaleUpperCase();
         if (
@@ -229,5 +233,34 @@ function getRandomAndSetInput(input: number | string, setInput: Function) {
     }
 }
 
+function generateRomanNumerals(): string[] {
+    const result: string[] = [];
+    
+    for (let i = 1; i <= 3999; i++) {
+      const romanNumeral: string = convertToRoman(i);
+      if (containsSameDigitFourOrMoreTimes(romanNumeral)) {
+        result.push(romanNumeral);
+      }
+    }
+    
+    return result;
+  }
+  
+  function containsSameDigitFourOrMoreTimes(romanNumeral: string): boolean {
+    const counts: Record<string, number> = {};
+    for (let i = 0; i < romanNumeral.length; i++) {
+      const digit: string = romanNumeral[i];
+      counts[digit] = (counts[digit] || 0) + 1;
+      if (counts[digit] >= 4) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  const romanNumeralsWithSameDigitFourOrMoreTimes = generateRomanNumerals();
+  console.log(romanNumeralsWithSameDigitFourOrMoreTimes.slice(200, 299));
 
-export { convertToRoman, convertToNumber, inputValidation, getRandomAndSetInput };
+  const exceptionsArray = ['XXXIX', 'M̅V̅', 'LXXXIX', 'CXXXIX', 'CLXXXIX', 'CCXXXIX', 'CCLXXXIX', 'CCCXXXIX', 'CCCLXXXIX', 'CCCXC', 'CCCXCI', 'CCCXCII', 'CCCXCIII', 'CCCXCIV', 'CCCXCV', 'CCCXCVI', 'CCCXCVII', 'CCCXCVIII', 'CCCXCIX', 'CDXXXIX', 'CDLXXXIX', 'DXXXIX', 'DLXXXIX', 'DCXXXIX', 'DCLXXXIX', 'DCCXXXIX', 'DCCLXXXIX', 'DCCCXXXIX', 'DCCCLXXXIX', 'DCCCXC', 'DCCCXCI', 'DCCCXCII', 'DCCCXCIII', 'DCCCXCIV', 'DCCCXCV', 'DCCCXCVI', 'DCCCXCVII', 'DCCCXCVIII', 'DCCCXCIX', 'CMXXXIX', 'CMLXXXIX', 'MXXXIX', 'MLXXXIX', 'MCXXXIX', 'MCLXXXIX', 'MCCXXXIX', 'MCCLXXXIX', 'MCCCXXXIX', 'MCCCLXXXIX', 'MCCCXC', 'MCCCXCI', 'MCCCXCII', 'MCCCXCIII', 'MCCCXCIV', 'MCCCXCV', 'MCCCXCVI', 'MCCCXCVII', 'MCCCXCVIII', 'MCCCXCIX', 'MCDXXXIX', 'MCDLXXXIX', 'MDXXXIX', 'MDLXXXIX', 'MDCXXXIX', 'MDCLXXXIX', 'MDCCXXXIX', 'MDCCLXXXIX', 'MDCCCXXXIX', 'MDCCCLXXXIX', 'MDCCCXC', 'MDCCCXCI', 'MDCCCXCII', 'MDCCCXCIII', 'MDCCCXCIV', 'MDCCCXCV', 'MDCCCXCVI', 'MDCCCXCVII', 'MDCCCXCVIII', 'MDCCCXCIX', 'MCMXXXIX', 'MCMLXXXIX', 'MMXXXIX', 'MMLXXXIX', 'MMCXXXIX', 'MMCLXXXIX', 'MMCCXXXIX', 'MMCCLXXXIX', 'MMCCCXXXIX', 'MMCCCLXXXIX', 'MMCCCXC', 'MMCCCXCI', 'MMCCCXCII', 'MMCCCXCIII', 'MMCCCXCIV', 'MMCCCXCV', 'MMCCCXCVI', 'MMCCCXCVII', 'MMCCCXCVIII', 'MMCCCXCIX', 'MMCDXXXIX', 'MMCDLXXXIX', 'MMDXXXIX', 'MMDLXXXIX', 'MMDCXXXIX', 'MMDCLXXXIX', 'MMDCCXXXIX', 'MMDCCLXXXIX', 'MMDCCCXXXIX', 'MMDCCCLXXXIX', 'MMDCCCXC', 'MMDCCCXCI', 'MMDCCCXCII', 'MMDCCCXCIII', 'MMDCCCXCIV', 'MMDCCCXCV', 'MMDCCCXCVI', 'MMDCCCXCVII', 'MMDCCCXCVIII', 'MMDCCCXCIX', 'MMCMXXXIX', 'MMCMLXXXIX', 'MMMXXXIX', 'MMMLXXXIX', 'MMMCXXXIX', 'MMMCLXXXIX', 'MMMCCXXXIX', 'MMMCCLXXXIX', 'MMMCCCXXXIX', 'MMMCCCLXXXIX', 'MMMCCCXC', 'MMMCCCXCI', 'MMMCCCXCII', 'MMMCCCXCIII', 'MMMCCCXCIV', 'MMMCCCXCV', 'MMMCCCXCVI', 'MMMCCCXCVII', 'MMMCCCXCVIII', 'MMMCCCXCIX', 'MMMCDXXXIX', 'MMMCDLXXXIX', 'MMMDXXXIX', 'MMMDLXXXIX', 'MMMDCXXXIX', 'MMMDCLXXXIX', 'MMMDCCXXXIX', 'MMMDCCLXXXIX', 'MMMDCCCXXXIX', 'MMMDCCCLXXXIX', 'MMMDCCCXC', 'MMMDCCCXCI', 'MMMDCCCXCII', 'MMMDCCCXCIII', 'MMMDCCCXCIV', 'MMMDCCCXCV', 'MMMDCCCXCVI', 'MMMDCCCXCVII', 'MMMDCCCXCVIII', 'MMMDCCCXCIX', 'MMMCM', 'MMMCMI', 'MMMCMII', 'MMMCMIII', 'MMMCMIV', 'MMMCMV', 'MMMCMVI', 'MMMCMVII', 'MMMCMVIII', 'MMMCMIX', 'MMMCMX', 'MMMCMXI', 'MMMCMXII', 'MMMCMXIII', 'MMMCMXIV', 'MMMCMXV', 'MMMCMXVI', 'MMMCMXVII', 'MMMCMXVIII', 'MMMCMXIX', 'MMMCMXX', 'MMMCMXXI', 'MMMCMXXII', 'MMMCMXXIII', 'MMMCMXXIV', 'MMMCMXXV', 'MMMCMXXVI', 'MMMCMXXVII', 'MMMCMXXVIII', 'MMMCMXXIX', 'MMMCMXXX', 'MMMCMXXXI', 'MMMCMXXXII', 'MMMCMXXXIII', 'MMMCMXXXIV', 'MMMCMXXXV', 'MMMCMXXXVI', 'MMMCMXXXVII', 'MMMCMXXXVIII', 'MMMCMXXXIX', 'MMMCMXL', 'MMMCMXLII', 'MMMCMXLIII', 'MMMCMXLIV', 'MMMCMXLV', 'MMMCMXLVI', 'MMMCMXLVII', 'MMMCMXLVIII', 'MMMCMXLIX', 'MMMCML', 'MMMCMLI', 'MMMCMLII', 'MMMCMLIII', 'MMMCMLIV', 'MMMCMLV', 'MMMCMLVI', 'MMMCMLVII', 'MMMCMLVIII', 'MMMCMLIX', 'MMMCMLX', 'MMMCMLXI', 'MMMCMLXII', 'MMMCMLXIII', 'MMMCMLXIV', 'MMMCMLXV', 'MMMCMLXVI', 'MMMCMLXVII', 'MMMCMLXVIII', 'MMMCMLXIX', 'MMMCMLXX', 'MMMCMLXXI', 'MMMCMLXXII', 'MMMCMLXXIII', 'MMMCMLXXIV', 'MMMCMLXXV', 'MMMCMLXXVI', 'MMMCMLXXVII', 'MMMCMLXXVIII', 'MMMCMLXXIX', 'MMMCMLXXX', 'MMMCMLXXXI', 'MMMCMLXXXII', 'MMMCMLXXXIII', 'MMMCMLXXXIV', 'MMMCMLXXXV', 'MMMCMLXXXVI', 'MMMCMLXXXVII', 'MMMCMLXXXVIII', 'MMMCMLXXXIX', 'MMMCMXC', 'MMMCMXCI', 'MMMCMXCII', 'MMMCMXCIII', 'MMMCMXCIV', 'MMMCMXCV', 'MMMCMXCVI', 'MMMCMXCVII', 'MMMCMXCVIII', 'MMMCMXCIX']
+
+  export { convertToRoman, convertToNumber, inputValidation, getRandomAndSetInput, generateRomanNumerals, containsSameDigitFourOrMoreTimes };

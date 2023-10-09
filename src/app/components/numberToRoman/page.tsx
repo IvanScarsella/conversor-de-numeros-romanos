@@ -1,11 +1,13 @@
 "use client"
 
 import React, { useEffect, useState, ChangeEvent } from "react";
-import { convertToRoman, getRandomAndSetInput } from "../../functions/functions";
+import { convertToRoman, getRandomAndSetInput, generateRomanNumerals, containsSameDigitFourOrMoreTimes } from "../../functions/functions";
 
 export default function NumberToRoman() {
     const [input, setInput] = useState<number>(1);
     const [roman, setRoman] = useState<string>("");
+    const [array, setArray] = useState<string[]>([]);
+
 
     useEffect(() => {
         if (input > 1000000) {
@@ -17,14 +19,16 @@ export default function NumberToRoman() {
         setRoman(convertToRoman(input));
     }, [input]);
 
+    useEffect(() => {
+        if(containsSameDigitFourOrMoreTimes(roman)){
+            array.push(roman)
+        }
+    }, [input])
+
     function changeHandler(e: ChangeEvent<HTMLInputElement>) {
         const value = parseInt(e.target.value, 10);
         setInput(isNaN(value) ? 0 : value);
     }
-
-    // function handleWheel(e: React.WheelEvent<HTMLInputElement>) {
-    //     e.preventDefault();
-    // }
 
     return (
         <>
@@ -37,7 +41,7 @@ export default function NumberToRoman() {
                 max="1000000"
                 type="number"
                 id="input"
-                // onWheel={handleWheel}
+            // onWheel={handleWheel}
             />
             <button
                 onClick={() => getRandomAndSetInput(input, setInput)}>
