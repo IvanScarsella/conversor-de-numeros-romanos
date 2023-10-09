@@ -1,8 +1,18 @@
-.mainDiv{
+.mainDiv {
+  background: linear-gradient(#b4000038, #cfb00038);
+}
+
+.mainDiv p {
   display: flex;
   flex-wrap: wrap;
-  font-size: 2em;
-  background: linear-gradient(#b4000038, #cfb00038);
+  justify-content: center;
+}
+
+
+.secondDiv {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 
