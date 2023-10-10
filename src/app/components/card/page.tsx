@@ -10,7 +10,7 @@ type CardProps = {
     input2: string
 };
 
-function Card({
+export default function Card({
     changeHandler,
     input,
     setInput,
@@ -59,5 +59,3 @@ function Card({
         </div>
     );
 }
-
-export default Card;
