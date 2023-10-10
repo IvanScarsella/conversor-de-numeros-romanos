@@ -15,7 +15,7 @@ export default function NumberToRoman() {
             setInput(1000000)
         }
         if (input < 1) {
-            setInput(1)
+            setInput(0)
         }
         setRoman(convertToRoman(input));
     }, [input]);
