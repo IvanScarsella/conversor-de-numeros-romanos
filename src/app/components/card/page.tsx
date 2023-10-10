@@ -1,4 +1,4 @@
-type CardProps = {
+export type CardProps = {
     changeHandler: (e: any) => void // Ajusta el tipo de acuerdo a tus necesidades
     input: number | string
     setInput: (value: any) => void; // Ajusta el tipo de acuerdo a tus necesidades
