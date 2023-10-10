@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, ChangeEvent } from "react";
 import { convertToRoman, getRandomAndSetInput, generateRomanNumerals, containsSameDigitFourOrMoreTimes } from "../../functions/functions";
-import  Card, {CardProps}  from "../card/page";
+import  Card  from "../card/page";
 
 export default function NumberToRoman() {
     const [input, setInput] = useState<number>(1);
