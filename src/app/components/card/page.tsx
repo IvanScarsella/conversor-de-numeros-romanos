@@ -1,3 +1,5 @@
+"use client"
+
 interface CardProps  {
     changeHandler: (e: any) => void; // Ajusta el tipo de acuerdo a tus necesidades
     input: number | string;
